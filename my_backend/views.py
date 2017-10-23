@@ -10,6 +10,12 @@ from rest_framework.response import Response
 from rest_framework.generics import ListAPIView
 # Create your views here.
 
+
+class OffersViewSet(viewsets.ModelViewSet):
+	queryset = company_offer.objects.all()
+	serializer_class = OffersSerializer
+
+
 class CompanyLoginViewSet(viewsets.ModelViewSet):
 	queryset = company.objects.all()
 	serializer_class = CompanyLoginSerializer
