@@ -27,7 +27,6 @@ class CompanyViewSet(viewsets.ModelViewSet):
 				
 
 class StudentViewSet(viewsets.ModelViewSet):
-	queryset = student.objects.all()
 	serializer_class = StudentSerializer
 
 	def get(self, request, format=None):
@@ -46,6 +45,14 @@ class StudentViewSet(viewsets.ModelViewSet):
 		user = student.objects.all()
 		user.delete()
 		return Response(status=status.HTTP_204_NO_CONTENT)
+
+	def get_queryset(self, *args, **kwargs):
+		#queryset = super(CompanyViewSet, self).get_queryset(*args, **kwargs)
+		queryset = student.objects.all()
+		query = self.request.GET.get("q")
+		if query:
+			queryset = student.objects.all().filter(userid=query)
+		return queryset	
 		
 
 

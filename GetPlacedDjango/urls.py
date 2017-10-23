@@ -24,7 +24,7 @@ routerStudent = routers.DefaultRouter()
 
 routerCompanyLogin.register(r'company',views.CompanyLoginViewSet)
 routerCompany.register(r'company',views.CompanyViewSet, 'company')
-routerStudent.register(r'student', views.StudentViewSet)
+routerStudent.register(r'student', views.StudentViewSet, 'student')
 
 
 urlpatterns = [
