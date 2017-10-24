@@ -23,10 +23,12 @@ from django.conf.urls.static import static
 routerCompanyLogin = routers.DefaultRouter()
 routerCompany = routers.DefaultRouter()
 routerStudent = routers.DefaultRouter()
+routerOffer = routers.DefaultRouter()
 
 routerCompanyLogin.register(r'company',views.CompanyLoginViewSet)
 routerCompany.register(r'company',views.CompanyViewSet, 'company')
 routerStudent.register(r'student', views.StudentViewSet, 'student')
+routerOffer.register(r'offer', views.OffersViewSet)
 
 
 urlpatterns = [
@@ -34,7 +36,10 @@ urlpatterns = [
     url(r'^login/', include(routerCompanyLogin.urls)),
     url(r'^companies/', include(routerCompany.urls)),
     url(r'^students/', include(routerStudent.urls)),
+    url(r'^offers/', include(routerOffer.urls)),
     
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 #if settings.DEBUG:
  #   urlpatterns+=static(settings.MEDIA_url)
+    
+

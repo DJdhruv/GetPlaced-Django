@@ -1,7 +1,14 @@
 from rest_framework import serializers
 from .models import *
 
+class ApplicantSerializer(serializers.ModelSerializer):
+	class Meta:
+		model = applicant_detail
+		fields = '__all__'
+
+
 class OffersSerializer(serializers.ModelSerializer):
+	applicants = ApplicantSerializer(read_only=True, many=True)
 	class Meta:
 		model = company_offer
 		fields = '__all__'
