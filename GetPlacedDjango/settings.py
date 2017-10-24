@@ -25,7 +25,7 @@ SECRET_KEY = '0ktdki&bj(m&qhp7mo3q_5#opj=s)-_qxx7izcip=6ib-6&w1+'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.0.109', '192.168.43.100', 'localhost', '0.0.0.0', '127.0.0.1']
+ALLOWED_HOSTS = ['192.168.0.105', '192.168.43.100', 'localhost', '0.0.0.0', '127.0.0.1']
 
 
 # Application definition
@@ -102,3 +102,4 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 STATIC_URL = '/static/'
+MEDIA_URL='/media/'
