@@ -64,6 +64,7 @@ class query(models.Model):
 		verbose_name_plural="queries"
 	userid=models.CharField(max_length=100)
 	description=models.CharField(max_length=1000)
+	datetime=models.CharField(max_length=1000)
 	
 	def __str__(self):
 		return self.userid	
