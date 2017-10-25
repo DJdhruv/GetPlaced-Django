@@ -18,6 +18,7 @@ class OffersViewSet(viewsets.ModelViewSet):
 class QueriesViewSet(viewsets.ModelViewSet):
 	queryset = query.objects.all()
 	serializer_class = QuerySerializer	
+	
 class CompanyLoginViewSet(viewsets.ModelViewSet):
 	queryset = company.objects.all()
 	serializer_class = CompanyLoginSerializer
@@ -42,7 +43,7 @@ class StudentViewSet(viewsets.ModelViewSet):
 		serializer = StudentSerializer(users, many=True)
 		return Response(serializer.data)
 
-	def post(self, request, format=None):
+	def put(self, request, format=None):
 		serializer = StudentSerializer(data=request.data)
 		if serializer.is_valid():
 			serializer.save()

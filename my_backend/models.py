@@ -59,6 +59,8 @@ class company(models.Model):
 	logo = models.ImageField(upload_to='media/company',blank=True, null=True)
 	def __str__(self):
 		return self.name
+
+		
 class query(models.Model):
 	class meta:
 		verbose_name_plural="queries"

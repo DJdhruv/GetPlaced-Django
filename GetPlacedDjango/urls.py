@@ -33,7 +33,6 @@ routerOffer.register(r'offer', views.OffersViewSet)
 routerQuery.register(r'query',views.QueriesViewSet)
 
 
-
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^login/', include(routerCompanyLogin.urls)),
