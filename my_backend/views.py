@@ -15,7 +15,9 @@ class OffersViewSet(viewsets.ModelViewSet):
 	queryset = company_offer.objects.all()
 	serializer_class = OffersSerializer
 
-
+class QueriesViewSet(viewsets.ModelViewSet):
+	queryset = query.objects.all()
+	serializer_class = QuerySerializer	
 class CompanyLoginViewSet(viewsets.ModelViewSet):
 	queryset = company.objects.all()
 	serializer_class = CompanyLoginSerializer

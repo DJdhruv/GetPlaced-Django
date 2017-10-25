@@ -56,10 +56,17 @@ class company(models.Model):
 	password = models.CharField(max_length=100)
 	name = models.CharField(max_length=100)
 	offers = models.ManyToManyField(company_offer)
-
+	logo = models.ImageField(upload_to='media/company',blank=True, null=True)
 	def __str__(self):
 		return self.name
-
+class query(models.Model):
+	class meta:
+		verbose_name_plural="queries"
+	userid=models.CharField(max_length=100)
+	description=models.CharField(max_length=1000)
+	
+	def __str__(self):
+		return self.userid	
 
 
 

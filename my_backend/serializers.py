@@ -34,3 +34,7 @@ class StudentSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = student
 		fields = '__all__'		
+class QuerySerializer(serializers.ModelSerializer):
+	class Meta:
+		model=query
+		fields='__all__'		
