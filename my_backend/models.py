@@ -3,9 +3,7 @@ from django.db import models
 # Create your models here.
 class applicant_detail(models.Model):
 	userid = models.CharField(max_length=100)
-	name = models.CharField(max_length=100)
-	status=models.CharField(max_length=100)
-	
+	name = models.CharField(max_length=100)	
 
 	def __str__(self):
 		return self.name
@@ -22,8 +20,8 @@ class company_offer(models.Model):
 	recruitment_procedure = models.CharField(max_length=100)
 	allowed_branches = models.CharField(max_length=100)
 	company_id = models.CharField(max_length=100)
-	applicants=models.ManyToManyField(applicant_detail)
-	#shortlisted_students=models.ManyToManyField(applicant_details)
+	interested_students=models.ManyToManyField(applicant_detail,related_name="interested",blank=True)
+	shortlisted_students=models.ManyToManyField(applicant_detail,related_name="shortlist",blank=True)
 
 	def __str__(self):
 		return self.company_id
@@ -37,7 +35,10 @@ class student(models.Model):
 	name = models.CharField(max_length=100)
 	email = models.CharField(max_length=100)
 	contact_number = models.CharField(max_length=100)
-	offers =  models.ManyToManyField(company_offer)
+	offers =  models.ManyToManyField(company_offer,blank=True)
+	department = models.CharField(max_length=100)
+	program = models.CharField(max_length=100)
+	
 	photo = models.ImageField(upload_to='media/students/images',blank=True, null=True)
 	resume=models.FileField(upload_to='media/students/resume',blank=True, null=True)
 	

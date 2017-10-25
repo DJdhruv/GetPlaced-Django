@@ -7,8 +7,9 @@ class ApplicantSerializer(serializers.ModelSerializer):
 		fields = '__all__'
 
 
-class OffersSerializer(serializers.ModelSerializer):
-	applicants = ApplicantSerializer(read_only=True, many=True)
+class OffersSerializer(serializers.HyperlinkedModelSerializer):
+	interested_students = ApplicantSerializer(read_only=True, many=True)
+	shortlisted_students = ApplicantSerializer(read_only=True,many=True) 
 	class Meta:
 		model = company_offer
 		fields = '__all__'
