@@ -25,12 +25,14 @@ routerCompany = routers.DefaultRouter()
 routerStudent = routers.DefaultRouter()
 routerOffer = routers.DefaultRouter()
 routerQuery=routers.DefaultRouter()
+routerApplicant=routers.DefaultRouter()
 
 routerCompanyLogin.register(r'company',views.CompanyLoginViewSet)
 routerCompany.register(r'company',views.CompanyViewSet, 'company')
 routerStudent.register(r'student', views.StudentViewSet, 'student')
 routerOffer.register(r'offer', views.OffersViewSet)
 routerQuery.register(r'query',views.QueriesViewSet)
+routerApplicant.register(r'applicant_detail',views.ApplicantsViewSet)
 
 
 urlpatterns = [
@@ -40,6 +42,7 @@ urlpatterns = [
     url(r'^students/', include(routerStudent.urls)),
     url(r'^offers/', include(routerOffer.urls)),
     url(r'^queries/', include(routerQuery.urls)),
+    url(r'^applicant_details/', include(routerApplicant.urls)),
     
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 #if settings.DEBUG:

@@ -20,9 +20,8 @@ class company_offer(models.Model):
 	recruitment_procedure = models.CharField(max_length=100)
 	allowed_branches = models.CharField(max_length=100)
 	company_id = models.CharField(max_length=100)
-	interested_students=models.ManyToManyField(applicant_detail,related_name="interested",blank=True)
-	shortlisted_students=models.ManyToManyField(applicant_detail,related_name="shortlist",blank=True)
-
+	interested_students=models.CharField(max_length=1000, blank=True)
+	shortlisted_students=models.CharField(max_length=1000,blank=True)
 	def __str__(self):
 		return self.company_id
 
@@ -55,12 +54,15 @@ class company(models.Model):
 	userid = models.CharField(max_length=100)
 	password = models.CharField(max_length=100)
 	name = models.CharField(max_length=100)
-	offers = models.ManyToManyField(company_offer)
+	#offers = models.ManyToManyField(company_offer,blank=True)
 	logo = models.ImageField(upload_to='media/company',blank=True, null=True)
+	website =models.CharField(max_length=100)
+	location = models.CharField(max_length=100)
+	contact = models.CharField(max_length=100)
 	def __str__(self):
 		return self.name
 
-		
+
 class query(models.Model):
 	class meta:
 		verbose_name_plural="queries"
