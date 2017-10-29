@@ -20,20 +20,43 @@ from my_backend import views
 from django.conf import settings
 from django.conf.urls.static import static
 
+## Specify viewset to load at a paticular URL pattern
+# This will load the Company Login Viewset
 routerCompanyLogin = routers.DefaultRouter()
+## Specify viewset to load at a paticular URL pattern
+# This will load Company Viewset
 routerCompany = routers.DefaultRouter()
+## Specify viewset to load at a paticular URL pattern## Specify viewset to load at a paticular URL pattern
+# This will load the Student Viewset
 routerStudent = routers.DefaultRouter()
+## Specify viewset to load at a paticular URL pattern
+# This will load the Offers Viewset
 routerOffer = routers.DefaultRouter()
+## Specify viewset to load at a paticular URL pattern
+# This will load the Queries Viewset
 routerQuery=routers.DefaultRouter()
-routerApplicant=routers.DefaultRouter()
+
 
 routerCompanyLogin.register(r'company',views.CompanyLoginViewSet)
 routerCompany.register(r'company',views.CompanyViewSet, 'company')
 routerStudent.register(r'student', views.StudentViewSet, 'student')
 routerOffer.register(r'offer', views.OffersViewSet)
 routerQuery.register(r'query',views.QueriesViewSet)
-routerApplicant.register(r'applicant_detail',views.ApplicantsViewSet)
 
+## Specify URL pattern for various pages
+# http://ip.address/admin : Loads viewset of Admin
+#
+# http://ip.address/login/company : Loades viewset for Login of Company
+#
+# http://ip.address/companies/company : Loads Viewset for Companies 
+#
+# http://ip.address/students/student : Loads viewset for Students
+#
+# http://ip.address/offers/offer : Loads viewset for Offers
+#
+# http://ip.address/queries : Loads viewset for Queries
+#
+# http://ip.address/admin : Page of Admin
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
@@ -42,8 +65,7 @@ urlpatterns = [
     url(r'^students/', include(routerStudent.urls)),
     url(r'^offers/', include(routerOffer.urls)),
     url(r'^queries/', include(routerQuery.urls)),
-    url(r'^applicant_details/', include(routerApplicant.urls)),
-    
+       
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 #if settings.DEBUG:
  #   urlpatterns+=static(settings.MEDIA_url)
